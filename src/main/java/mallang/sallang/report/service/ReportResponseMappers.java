@@ -18,12 +18,12 @@ public class ReportResponseMappers {
         dto.location.lon = req.lon;
 
         dto.weather = new ReportResponseDto.Weather();
-        dto.weather.temperatureC = w.temperature();
-        dto.weather.humidityPct = w.humidity();
+        dto.weather.temperature = w.temperature();
+        dto.weather.humidity = w.humidity();
 
         dto.raw = new ReportResponseDto.DailyRaw();
         dto.raw.steps = req.steps;
-        dto.raw.waterIntakeMl = req.waterIntake;
+        dto.raw.waterIntake = req.waterIntake;
         dto.raw.workMinutes = req.workMinutes;
         dto.raw.restMinutes = req.restMinutes;
 

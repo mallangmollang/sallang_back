@@ -17,14 +17,14 @@ public class ReportResponseDto {
     }
 
     public static class Weather {
-        public double temperatureC;
-        public double humidityPct;
+        public double temperature;
+        public double humidity;
     }
 
     // 프론트에서 그대로 표시할 수 있는 원시값
     public static class DailyRaw {
         public int steps;
-        public int waterIntakeMl;
+        public int waterIntake;
         public int workMinutes;
         public int restMinutes;
     }

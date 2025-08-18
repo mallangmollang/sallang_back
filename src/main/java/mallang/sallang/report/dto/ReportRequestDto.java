@@ -1,10 +1,12 @@
 package mallang.sallang.report.dto;
 
 import jakarta.validation.constraints.Pattern;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Data
 public class ReportRequestDto {
     // 위치 정보 및 레포트 생성 일자
     public Double lat;
@@ -30,17 +32,20 @@ public class ReportRequestDto {
     public List<RiskWindow> riskWindows;
 
     //휴식 시간대
+    @Data
     public static class RestWindow {
         // "HH:mm" 형태로 받되, 서비스에서 LocalTime으로 파싱해 사용
         @Pattern(regexp = "^[0-2]\\d:[0-5]\\d$") public String start;
         @Pattern(regexp = "^[0-2]\\d:[0-5]\\d$") public String end;
     }
 
+    @Data
     public static class WorkWindow {
         @Pattern(regexp = "^[0-2]\\d:[0-5]\\d$") public String start;
         @Pattern(regexp = "^[0-2]\\d:[0-5]\\d$") public String end;
     }
 
+    @Data
     public static class RiskWindow {
         @Pattern(regexp = "^[0-2]\\d:[0-5]\\d$") public String start;
         @Pattern(regexp = "^[0-2]\\d:[0-5]\\d$") public String end;

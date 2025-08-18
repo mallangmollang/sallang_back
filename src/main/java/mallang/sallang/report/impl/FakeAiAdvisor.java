@@ -1,4 +1,4 @@
-package mallang.sallang.report.service;
+package mallang.sallang.report.impl;
 
 import mallang.sallang.report.domain.AiAdvice;
 import mallang.sallang.report.domain.WeatherData;

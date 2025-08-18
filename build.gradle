@@ -3,6 +3,9 @@ plugins {
     id 'org.springframework.boot' version '3.5.4'
     id 'io.spring.dependency-management' version '1.1.7'
 }
+ext {
+    springAiVersion = "1.0.1"
+}
 
 group = 'mallang'
 version = '0.0.1-SNAPSHOT'
@@ -26,6 +29,8 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'org.springframework.ai:spring-ai-starter-model-openai'
 
     compileOnly 'org.projectlombok:lombok'
 
@@ -34,6 +39,11 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.ai:spring-ai-bom:$springAiVersion"
+    }
 }
 
 tasks.named('test') {

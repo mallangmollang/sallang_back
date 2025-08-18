@@ -1,4 +1,4 @@
-package mallang.sallang.report.service;
+package mallang.sallang.report.impl;
 
 import mallang.sallang.report.domain.WeatherData;
 import mallang.sallang.report.port.WeatherProvider;
@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 //더미 구현 -> 시간대/위치 무시, 고정 규칙
 @Component
-@Profile("fake")
+@Profile("!fake")
 public class FakeWeatherService implements WeatherProvider {
 
     @Override

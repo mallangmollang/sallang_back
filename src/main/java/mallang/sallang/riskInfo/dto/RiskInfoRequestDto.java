@@ -1,4 +1,4 @@
-package mallang.sallang.dto.riskIfoDto;
+package mallang.sallang.riskInfo.dto;
 
 import java.util.List;
 

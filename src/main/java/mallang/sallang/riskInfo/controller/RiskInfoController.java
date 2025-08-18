@@ -1,9 +1,9 @@
-package mallang.sallang.controller;
+package mallang.sallang.riskInfo.controller;
 
 import lombok.RequiredArgsConstructor;
-import mallang.sallang.dto.riskIfoDto.RiskInfoRequestDto;
-import mallang.sallang.dto.riskIfoDto.RiskInfoResponseDto;
-import mallang.sallang.service.RiskInfoService;
+import mallang.sallang.riskInfo.dto.RiskInfoRequestDto;
+import mallang.sallang.riskInfo.dto.RiskInfoResponseDto;
+import mallang.sallang.riskInfo.service.RiskInfoService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

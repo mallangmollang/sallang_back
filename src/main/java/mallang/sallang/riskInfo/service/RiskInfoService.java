@@ -1,8 +1,9 @@
-package mallang.sallang.service;
+package mallang.sallang.riskInfo.service;
 
 import lombok.RequiredArgsConstructor;
-import mallang.sallang.dto.riskIfoDto.RiskInfoRequestDto;
-import mallang.sallang.dto.riskIfoDto.RiskInfoResponseDto;
+import mallang.sallang.riskInfo.dto.RiskInfoRequestDto;
+import mallang.sallang.riskInfo.dto.RiskInfoResponseDto;
+import mallang.sallang.weather.WeatherInfoService;
 import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.util.Random;

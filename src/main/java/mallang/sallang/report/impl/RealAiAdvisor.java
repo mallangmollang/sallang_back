@@ -5,13 +5,11 @@ import mallang.sallang.report.domain.WeatherData;
 import mallang.sallang.report.dto.ReportRequestDto;
 import mallang.sallang.report.port.HealthAdvisor;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-@Profile("!fake")
 public class RealAiAdvisor implements HealthAdvisor{
 
     private final ChatClient chatClient;
@@ -31,10 +29,12 @@ public class RealAiAdvisor implements HealthAdvisor{
             너는 온열질환 예방 코치다. 아래 입력을 바탕으로 조언을 생성하되,
             결과는 반드시 JSON(오직 JSON)으로만 출력. 마크다운/코드펜스/주석 금지.
             수분 섭취량, 휴식 시간 등을 고려해 hydration, rest, symptom 점수를 산정. 높을수록 온열 질환 예방을 잘한 것.
-            위험도가 높았던 시간대와 휴식 시간대가 10분 이상 겹치지 않는 경우이거나 수분 섭취량이 권장량 미만인 경우
-            tomorrowSuggestions에 그것과 관련된 제안을 추가할 것.
-            analysisComments와 tomorrowSuggestions는 각각 최대 3개까지.
-            각 그룹별 3개의 조언들은 가능한 서로 다른 내용, 해요체를 사용한 사용자 친화적인 친근한 말투로.
+            analysisComments에는 일일 결산 느낌(단 이것을 명시하지는 말 것), tomorrowSuggestions에는 내일의 행동 제안 느낌.
+            analysisComments의 분석 내용을 토대로, 개선 방안을 tomorrowSuggestions에 제시.
+            특히 위험도가 높았던 시간대와 휴식 시간대가 10분 이상 겹치지 않거나 수분 섭취량이 권장량 미만인 경우
+            tomorrowSuggestions에 그것과 관련된 제안을 추가.
+            analysisComments와 tomorrowSuggestions는 각각 최대 3개.
+            각 그룹별 3개의 조언들은 가능한 서로 다른 내용, 해요체를 사용한 사용자 친화적인 친근한 말투로. ml를 제외한 영단어 사용 X.
             
             [요청]
             %s

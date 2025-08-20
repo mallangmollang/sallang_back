@@ -1,5 +1,6 @@
 package mallang.sallang.riskInfo.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,7 +27,8 @@ public class RiskInfoResponseDto {
     @Getter
     @Setter
     public static class RealtimeRisk {
-        private double temperatureC;
+        @JsonProperty("temperature")  // JSON 응답에는 "temperature"
+        private double temperatureC;  // 내부 필드는 temperatureC 그대로 사용
         private int humidityPercentage;
         private int uvIndex;
         private int heatstrokeRiskScore;

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import mallang.sallang.riskInfo.dto.RiskInfoRequestDto;
 import mallang.sallang.riskInfo.dto.RiskInfoResponseDto;
-import mallang.sallang.weather.WeatherInfoService;
+import mallang.sallang.weather.service.WeatherInfoService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

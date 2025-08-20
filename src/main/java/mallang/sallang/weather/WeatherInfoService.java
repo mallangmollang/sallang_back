@@ -1,4 +1,4 @@
-package mallang.sallang.service;
+package mallang.sallang.weather;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

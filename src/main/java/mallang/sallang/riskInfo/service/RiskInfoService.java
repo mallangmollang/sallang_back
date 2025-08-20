@@ -1,10 +1,11 @@
-package mallang.sallang.service;
+package mallang.sallang.riskInfo.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import mallang.sallang.dto.riskIfoDto.RiskInfoRequestDto;
-import mallang.sallang.dto.riskIfoDto.RiskInfoResponseDto;
+import mallang.sallang.riskInfo.dto.RiskInfoRequestDto;
+import mallang.sallang.riskInfo.dto.RiskInfoResponseDto;
+import mallang.sallang.weather.WeatherInfoService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
-import java.util.List; // java.util.List import
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -25,7 +26,7 @@ public class RiskInfoService {
     private final Random random = new Random();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    @Value("${openai.api.key}")
+    @Value("${spring.ai.openai.api-key}")
     private String openAiApiKey;
 
     public RiskInfoResponseDto calculateAndCreateResponse(RiskInfoRequestDto requestDto) {

@@ -1,4 +1,4 @@
-package mallang.sallang.dto.weatherDto;
+package mallang.sallang.weather.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

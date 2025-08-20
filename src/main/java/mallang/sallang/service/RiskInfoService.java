@@ -12,8 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.List; // java.util.List import
 import java.util.Map;
 import java.util.Random;
 
@@ -58,13 +58,19 @@ public class RiskInfoService {
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.setBearerAuth(openAiApiKey);
 
-            Map<String, Object> message = new HashMap<>();
-            message.put("role", "user");
-            message.put("content", prompt);
+            // ✅ 변경: system, user 메시지를 포함하는 List로 수정
+            Map<String, Object> systemMessage = new HashMap<>();
+            systemMessage.put("role", "system");
+            systemMessage.put("content", "너는 사용자 정보와 날씨를 기반으로 열사병 위험 점수와 충고를 제공하는 AI 어시스턴트야. 오직 JSON 형식으로만 응답해야 하며, 다른 설명이나 텍스트는 절대 포함하지 마.");
+
+            Map<String, Object> userMessage = new HashMap<>();
+            userMessage.put("role", "user");
+            userMessage.put("content", prompt);
 
             Map<String, Object> body = new HashMap<>();
-            body.put("model", "gpt-4o-mini");
-            body.put("messages", Collections.singletonList(message));
+            // ✅ 변경: 파인튜닝된 모델 ID 사용
+            body.put("model", "ft:gpt-4.1-nano-2025-04-14:wodbs:heatrisk:C6XZZovm");
+            body.put("messages", List.of(systemMessage, userMessage));
 
             String jsonBody = objectMapper.writeValueAsString(body);
 
@@ -92,11 +98,9 @@ public class RiskInfoService {
                                                                     double temperature,
                                                                     int humidity,
                                                                     int uvIndex) {
-        // ✅ 변경: DTO 필드 직접 사용 (physicalInfo, currentActivity 제거됨)
         String prompt =
                 "사용자 정보와 날씨를 기반으로 0~100 사이 열사병 위험 점수와 짧은 AI 충고를 JSON 형식으로 만들어주세요.\n" +
                         "JSON 키는 score(숫자), advice(문자열)로 해주세요.\n" +
-                        "출력할 때 **다른 설명이나 텍스트는 절대 포함하지 말고**, 순수 JSON만 출력해주세요.\n" +
                         "나이: " + requestDto.getAge() + "\n" +
                         "걸음수: " + requestDto.getSteps() + "\n" +
                         "수분 섭취량: " + requestDto.getWaterIntake() + "ml\n" +
@@ -104,9 +108,11 @@ public class RiskInfoService {
                         "수면 시간: " + requestDto.getSleepMinutes() + "분\n" +
                         "온도: " + temperature + "\n" +
                         "습도: " + humidity + "\n" +
-                        "UV 지수: " + uvIndex + "\n" +
-                        "JSON만 출력해주세요. { 로 시작하고 } 로 끝나게 해줘. " +
-                        "충고할 때 개킹받는 오덕말투로 해줘. 앞에 json 같은 글씨 쓰지 말고 그냥 JSON 형식만 지켜.";
+                        "UV 지수: " + uvIndex + "\n";
+
+        // ✅ 변경: GPT 호출 프롬프트에서 불필요한 지시사항 제거
+        // "JSON만 출력해주세요. { 로 시작하고 } 로 끝나게 해줘. 앞에 json 같은 글씨 쓰지 말고 그냥 JSON 형식만 지켜."
+        // 이 부분은 system 메시지가 대신 처리하므로 제거했습니다.
 
         System.out.println("=== GPT Prompt ===");
         System.out.println(prompt);
@@ -151,8 +157,6 @@ public class RiskInfoService {
         }
     }
 
-
-
     // 여기서만 쓰는 DTO로 따로 파일을 안만듦
     // DTO 생성
     public RiskInfoResponseDto createResponseDto(RiskInfoResponseDto.RealtimeRisk realtimeRisk, String aiAdvice) {
@@ -166,14 +170,5 @@ public class RiskInfoService {
         responseDto.setData(data);
 
         return responseDto;
-    }
-
-//
-//    public int calculateHeatstrokeRiskScore(RiskInfoRequestDto requestDto, double temperature, int humidity, int uvIndex) {
-//        throw new UnsupportedOperationException("GPT 기반 점수 계산으로 대체됨");
-//    }
-
-    public String getAiAdvice() {
-        throw new UnsupportedOperationException("GPT 기반 AI 조언으로 대체됨");
     }
 }

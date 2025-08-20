@@ -6,7 +6,7 @@ import mallang.sallang.report.domain.WeatherData;
 import mallang.sallang.report.dto.ReportRequestDto;
 import mallang.sallang.report.dto.ReportResponseDto;
 import mallang.sallang.report.port.HealthAdvisor;
-import mallang.sallang.weather.WeatherInfoService;
+import mallang.sallang.weather.service.WeatherInfoService;
 import org.springframework.stereotype.Service;
 
 @Service

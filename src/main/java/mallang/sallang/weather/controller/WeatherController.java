@@ -1,9 +1,9 @@
-package mallang.sallang.riskInfo.controller;
+package mallang.sallang.weather.controller;
 
 import lombok.RequiredArgsConstructor;
+import mallang.sallang.weather.service.WeatherInfoService;
 import mallang.sallang.weather.dto.WeatherRequestDto;
 import mallang.sallang.weather.dto.WeatherResponseDto;
-import mallang.sallang.weather.WeatherInfoService;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.web.bind.annotation.*;
 

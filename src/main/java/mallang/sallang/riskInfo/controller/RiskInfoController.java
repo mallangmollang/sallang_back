@@ -4,13 +4,11 @@ import lombok.RequiredArgsConstructor;
 import mallang.sallang.riskInfo.dto.RiskInfoRequestDto;
 import mallang.sallang.riskInfo.dto.RiskInfoResponseDto;
 import mallang.sallang.riskInfo.service.RiskInfoService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/risk")
+@CrossOrigin(origins = "http://localhost:5173")
 @RequiredArgsConstructor
 public class RiskInfoController {
 

@@ -4,16 +4,14 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import mallang.sallang.restArea.dto.RestAreaDto;
 import mallang.sallang.restArea.service.RestAreaService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/restarea")
+@CrossOrigin(origins = "http://localhost:5173")
 @Tag(name = "쉼터 추천", description = "위치 기반 쉼터 추천 서비스")
 public class RestAreaController {
     private final RestAreaService restAreaService;

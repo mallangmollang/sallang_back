@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/reports")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://sunny-boba-b65221.netlify.app")
 @Tag(name = "일일 레포트", description = "일일 레포트 생성 컨트롤러")
 public class ReportController {
     private final ReportService reportService;

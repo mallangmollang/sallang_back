@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/restarea")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://sunny-boba-b65221.netlify.app")
 @Tag(name = "쉼터 추천", description = "위치 기반 쉼터 추천 서비스")
 public class RestAreaController {
     private final RestAreaService restAreaService;

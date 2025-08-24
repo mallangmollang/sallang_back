@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/risk")
-@CrossOrigin(origins = "https://sunny-boba-b65221.netlify.app")
+@CrossOrigin(origins = "https://sallang.netlify.app")
 @RequiredArgsConstructor
 public class RiskInfoController {
 

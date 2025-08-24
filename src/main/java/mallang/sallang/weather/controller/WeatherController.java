@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/weather")
-@CrossOrigin(origins = "https://sallang.netlify.app")
+@CrossOrigin(origins = {"https://sallang.netlify.app", "http://localhost:5173"})
 @RequiredArgsConstructor
 public class WeatherController {
 
